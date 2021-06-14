@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="tanukidevelop.PokecaDecukRecipe.pokeca_deck_manager">
+    package="com.example.poceka_deuk_manager">
    <application
-        android:label="pokeca_deck_manager"
+        android:label="poceka_deuk_manager"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
