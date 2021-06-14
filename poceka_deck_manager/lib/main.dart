@@ -20,8 +20,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          // primarySwatch: Colors.blue, scaffoldBackgroundColor: Colors.white),
+          primarySwatch: Colors.blue),
       home: MyHomePage(title: 'デッキレシピ一覧'),
     );
   }
@@ -87,23 +87,21 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'デッキレシピが表示されている行を長押しすると編集ができます',
-            ),
-
+            SizedBox(
+                width: double.infinity,
+                child: Text('デッキレシピが表示されている行を長押しすると編集ができます。     　 ',
+                    style: TextStyle(fontFamily: 'Code128', fontSize: 10.0),
+                    textAlign: TextAlign.right)),
             Flexible(
               //Flexibleでラップ
               child: ListView.builder(
                 itemBuilder: (BuildContext context, int index) {
                   return Card(
-                    child: Padding(
-                      child: Text(
-                        'デッキ名：$index',
-                        style: TextStyle(fontSize: 22.0),
-                      ),
-                      padding: EdgeInsets.all(20.0),
-                    ),
-                  );
+                      child: ListTile(
+                    title: Text("デッキ名：なんだかんだほんにゃ"),
+                    subtitle:
+                        Text("デッキコード:asasasa-asasasa-asasasas  作成日:2021年6月15日"),
+                  ));
                 },
                 itemCount: 10,
               ),
