@@ -1,4 +1,4 @@
-# poceka_deuk_manager
+# poceka_deck_manager
 
 A new Flutter project.
 

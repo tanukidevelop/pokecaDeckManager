@@ -1,0 +1,16 @@
+{
+  "name": "BrowserIcon",
+  "css_prefix_text": "",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "87f4758ee5aa9b99e6a61d8460413fee",
+      "css": "language",
+      "code": 59393,
+      "src": "material"
+    }
+  ]
+}

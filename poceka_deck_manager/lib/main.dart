@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:poceka_deck_manager/browser_icon_icons.dart';
 
 void main() {
   runApp(MyApp());
@@ -69,6 +70,15 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true, // 中央寄せを解除
+
+        // 左側のアイコン
+        leading: IconButton(
+          icon: Icon(BrowserIcon.language),
+          onPressed: () => setState(() {
+            // _count++;
+          }),
+        ),
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),

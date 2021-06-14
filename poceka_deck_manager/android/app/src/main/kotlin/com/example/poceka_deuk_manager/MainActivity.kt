@@ -1,4 +1,4 @@
-package com.example.poceka_deuk_manager
+package com.example.poceka_deck_manager
 
 import io.flutter.embedding.android.FlutterActivity
 
