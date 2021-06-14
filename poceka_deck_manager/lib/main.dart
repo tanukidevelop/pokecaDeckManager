@@ -7,6 +7,40 @@ void main() {
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+  List<DeckRecipeModel> _deckList = [
+    DeckRecipeModel(
+        deckName: "1", deckCode: "11", deckMemo: "111", createDate: "1111"),
+    DeckRecipeModel(
+        deckName: "2", deckCode: "22", deckMemo: "222", createDate: "2222"),
+    DeckRecipeModel(
+        deckName: "3", deckCode: "33", deckMemo: "333", createDate: "3333")
+  ];
+
+  Widget MyListView() {
+    return ListView.separated(
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+              padding: EdgeInsets.all(10),
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    alignment: Alignment.topLeft,
+                    child: Text(_deckList[index].deckName.toString(),
+                        style: TextStyle(fontSize: 25)),
+                  ),
+                  Spacer(),
+                  Container(
+                    alignment: Alignment.bottomRight,
+                    child: Text(_deckList[index].deckCode.toString(),
+                        style: TextStyle(fontSize: 20)),
+                  )
+                ],
+              ));
+        },
+        separatorBuilder: (BuildContext context, int index) => Divider(),
+        itemCount: _deckList.length);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,6 +60,16 @@ class MyApp extends StatelessWidget {
       home: MyHomePage(title: 'デッキレシピ一覧'),
     );
   }
+}
+
+// デッキレシピのデータモデル
+class DeckRecipeModel {
+  String? deckName = "";
+  String? deckCode = "";
+  String? deckMemo = "";
+  String? createDate = "";
+  DeckRecipeModel(
+      {this.deckName, this.deckCode, this.deckMemo, this.createDate});
 }
 
 class MyHomePage extends StatefulWidget {
@@ -115,15 +159,26 @@ class _MyHomePageState extends State<MyHomePage> {
           // center the children vertically; the main axis here is the vertical
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
+
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button this many times:',
+              'ポケモンが表示されている行を長押しすると編集ができます',
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+
+            Flexible(
+              //Flexibleでラップ
+              child: ListView.builder(
+                  itemCount: 100,
+                  itemBuilder: (BuildContext context, int index) {
+                    return index % 2 == 0 ? Text('item no: $index') : Divider();
+                  }),
             ),
+
+            // Text(
+            //   '$_counter',
+            //   style: Theme.of(context).textTheme.headline4,
+            // ),
           ],
         ),
       ),
