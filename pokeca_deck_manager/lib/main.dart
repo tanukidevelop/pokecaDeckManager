@@ -95,18 +95,18 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         title: Text(widget.title),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () => setState(() {
-              // _count++;
-            }),
-          ),
-          IconButton(
-            icon: Icon(Icons.remove),
-            onPressed: () => setState(() {
-              // _count--;
-            }),
-          ),
+          // IconButton(
+          //   icon: Icon(Icons.add),
+          //   onPressed: () => setState(() {
+          //     // _count++;
+          //   }),
+          // ),
+          // IconButton(
+          //   icon: Icon(Icons.remove),
+          //   onPressed: () => setState(() {
+          //     // _count--;
+          //   }),
+          // ),
         ],
       ),
       body: Center(
