@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
 import 'detail.dart';
+import 'edit.dart';
 
 void main() {
   runApp(ListApp());
@@ -121,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
         // 左側のアイコン
         leading: IconButton(
-          icon: Icon(Icons.add_box_outlined ),
+          icon: Icon(Icons.add_box_outlined),
           onPressed: () => setState(() {
             Navigator.push(
                 context,
@@ -183,6 +184,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     }, // タップ
                     onLongPress: () {
                       print("onLongPress called.");
+                      final DeckRecipeModel tapDeckModel = _deckList[index];
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => EditPage(tapDeckModel)),
+                      );
                     }, // 長押し
                   ));
                 },
