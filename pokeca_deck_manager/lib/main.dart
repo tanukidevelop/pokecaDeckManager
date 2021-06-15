@@ -58,6 +58,13 @@ class ListApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: '/',
+      routes: {
+        // '/': (context) => Screen0(),
+        // '/first': (context) => Screen1(),
+        // '/second': (context) => Screen2(),
+        '/next': (context) => AddPage(),
+      },
       title: 'Flutter Demo',
       theme: ThemeData(
           // primarySwatch: Colors.blue, scaffoldBackgroundColor: Colors.white),
@@ -106,6 +113,13 @@ class _MyHomePageState extends State<MyHomePage> {
             "ハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキ",
         createDate: "2021年6月15日"),
   ];
+
+  void _AddList(DeckRecipeModel deckModel) {
+    setState(() {
+      _deckList.add(deckModel);
+    });
+  }
+
   void _SwapList(int oldIndex, int newIndex) {
     setState(() {
       if (oldIndex < newIndex) {
@@ -148,7 +162,7 @@ class _MyHomePageState extends State<MyHomePage> {
               //Flexibleでラップ
               child: ReorderableListView.builder(
                 padding: const EdgeInsets.symmetric(horizontal: 40),
-                itemCount: 3,
+                itemCount: _deckList.length,
                 itemBuilder: (BuildContext context, int index) {
                   DeckRecipeModel deckModel = _deckList[index];
                   return Card(
@@ -223,13 +237,17 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () => {
-          setState(() {}),
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => AddPage(_deckList)))
-        },
-      ),
+          child: Icon(Icons.add),
+          onPressed: () async {
+            final result = await Navigator.pushNamed(context, '/next');
+            final dict = result as Map;
+            final deckModel = DeckRecipeModel(
+                deckName: result["deckName"].toString(),
+                deckCode: result["deckCode"].toString(),
+                deckMemo: result["deckMemo"].toString(),
+                createDate: result["createDate"].toString());
+            _AddList(deckModel);
+          }),
     );
   }
 }
