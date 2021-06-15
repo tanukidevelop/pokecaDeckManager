@@ -5,23 +5,23 @@ void main() {
   runApp(MyApp());
 }
 
-// WebViewのWidgit
-class WebViewSample extends StatelessWidget {
+// デッキレシピを新規作成する
+class CreateDeckRecipeWebviewTest extends StatelessWidget {
+  final String url = "https://www.pokemon-card.com/deck/deck.html";
+
   @override
   Widget build(BuildContext context) {
-    return new WebviewScaffold(
-      url: "https://www.google.com/",
-      appBar: new AppBar(
-        title: const Text('WebView Sample'),
-      ),
-      withJavascript: true,
-      withLocalStorage: true,
-      hidden: true,
-      initialChild: Container(
-        color: Colors.redAccent,
-        child: const Center(
-          child: Text('Waiting.....'),
+    return WillPopScope(
+      onWillPop: () async {
+        FlutterWebviewPlugin()
+            .close(); // Close the plugin so that it doesn't overlay anymore
+        return true;
+      },
+      child: WebviewScaffold(
+        appBar: AppBar(
+          title: Text("デッキレシピ 新規作成"),
         ),
+        url: url,
       ),
     );
   }
@@ -86,12 +86,11 @@ class _MyHomePageState extends State<MyHomePage> {
         leading: IconButton(
           icon: Image.asset('images/sample.jpg'),
           onPressed: () => setState(() {
-            // _count++;
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => CreateDeckRecipeWebviewTest()));
             print("tapped");
-            final flutterWebviewPlugin = new FlutterWebviewPlugin();
-            flutterWebviewPlugin.launch(
-                "https://cyublog.com/articles/flutter-ja/flutter-webview-plugin/",
-                hidden: true);
           }),
         ),
         title: Text(widget.title),
