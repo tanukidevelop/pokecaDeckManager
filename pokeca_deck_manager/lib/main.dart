@@ -127,6 +127,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     title: Text("デッキ名：なんだかんだほんにゃ"),
                     subtitle:
                         Text("デッキコード:asasasa-asasasa-asasasas  作成日:2021年6月15日"),
+                    onTap: () {
+                      print("onTap called.");
+                    }, // タップ
+                    onLongPress: () {
+                      print("onLongPress called.");
+                    }, // 長押し
                   ));
                 },
                 itemCount: 10,
