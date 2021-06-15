@@ -166,7 +166,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     subtitle: Text("デッキコード：" +
                         deckModel.deckCode.toString() +
-                        " 作成日:" +
+                        "\n"
+                            "作成日：" +
                         deckModel.createDate.toString()),
                     onTap: () {
                       print("onTap called.");

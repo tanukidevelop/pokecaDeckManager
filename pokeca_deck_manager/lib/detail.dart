@@ -14,7 +14,7 @@ class DetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('デッキレシピ詳細'),
+        title: Text('デッキレシピ 詳細'),
       ),
       body: Center(
         child: Column(
