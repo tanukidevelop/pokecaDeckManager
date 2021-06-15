@@ -3,12 +3,8 @@ import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'main.dart';
 
 class DetailPage extends StatelessWidget {
-  var deckModel = DeckRecipeModel(
-      deckName: "ハイクラスデッキ インテレオンVmaxデッキ",
-      deckCode: "9QgnQn-aPourR-gLgn9i",
-      deckMemo:
-          "ハイクラスデッキ インテレオンVmaxデッキハイクラスデッキ インテレオンVmaxデッキハイクラスデッキ インテレオンVmaxデッキハイクラスデッキ インテレオンVmaxデッキハイクラスデッキ インテレオンVmaxデッキハイクラスデッキ インテレオンVmaxデッキ",
-      createDate: "2021年6月15日");
+  DeckRecipeModel deckModel;
+  DetailPage(this.deckModel);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +23,7 @@ class DetailPage extends StatelessWidget {
                 child: Text(' ▼デッキ名',
                     style: TextStyle(
                         fontFamily: 'Code128',
-                        fontSize: 20.0,
+                        fontSize: 18.0,
                         fontWeight: FontWeight.bold),
                     textAlign: TextAlign.left)),
             SizedBox(
@@ -35,7 +31,7 @@ class DetailPage extends StatelessWidget {
                 child: Text(' ' + deckModel.deckName.toString(),
                     style: TextStyle(
                         fontFamily: 'Code128',
-                        fontSize: 18.0,
+                        fontSize: 20.0,
                         fontWeight: FontWeight.normal),
                     textAlign: TextAlign.left)),
             Spacer(
@@ -47,7 +43,7 @@ class DetailPage extends StatelessWidget {
                 child: Text(' ▼デッキコード',
                     style: TextStyle(
                         fontFamily: 'Code128',
-                        fontSize: 20.0,
+                        fontSize: 18.0,
                         fontWeight: FontWeight.bold),
                     textAlign: TextAlign.left)),
             SizedBox(
@@ -55,7 +51,7 @@ class DetailPage extends StatelessWidget {
                 child: Text(' ' + deckModel.deckCode.toString(),
                     style: TextStyle(
                         fontFamily: 'Code128',
-                        fontSize: 18.0,
+                        fontSize: 20.0,
                         fontWeight: FontWeight.normal),
                     textAlign: TextAlign.left)),
             Spacer(
@@ -67,7 +63,7 @@ class DetailPage extends StatelessWidget {
                 child: Text(' ▼メモ',
                     style: TextStyle(
                         fontFamily: 'Code128',
-                        fontSize: 20.0,
+                        fontSize: 18.0,
                         fontWeight: FontWeight.bold),
                     textAlign: TextAlign.left)),
             SizedBox(

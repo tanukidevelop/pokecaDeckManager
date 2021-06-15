@@ -171,9 +171,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         deckModel.createDate.toString()),
                     onTap: () {
                       print("onTap called.");
+                      final DeckRecipeModel tapDeckModel = _deckList[index];
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => DetailPage()),
+                        MaterialPageRoute(
+                            builder: (context) => DetailPage(tapDeckModel)),
                       );
                     }, // タップ
                     onLongPress: () {
