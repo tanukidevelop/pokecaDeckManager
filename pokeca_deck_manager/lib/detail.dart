@@ -72,12 +72,11 @@ class DetailPage extends StatelessWidget {
                     textAlign: TextAlign.left)),
             SizedBox(
                 width: double.infinity,
-                height: 180, // Widgetの幅を指定
-
+                height: 120, // Widgetの幅を指定
                 child: Text(' ' + deckModel.deckMemo.toString(),
                     style: TextStyle(
                         fontFamily: 'Code128',
-                        fontSize: 17.0,
+                        fontSize: 16.0,
                         fontWeight: FontWeight.normal),
                     textAlign: TextAlign.left)),
             Spacer(
@@ -92,7 +91,27 @@ class DetailPage extends StatelessWidget {
               flex: 5,
             ),
             new Divider(color: Colors.black),
-
+            Spacer(
+              flex: 5,
+            ),
+            RaisedButton(
+              child: const Text('ブラウザでデッキレシピを開く'),
+              color: Colors.blue,
+              textColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              onPressed: () {
+                final String url =
+                    'https://www.pokemon-card.com/deck/confirm.html/deckID/' +
+                        deckModel.deckCode.toString();
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            DetailDeckRecipeWebviewTest(url)));
+              },
+            ),
             Spacer(flex: 100),
 
             // Text(

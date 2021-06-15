@@ -29,6 +29,29 @@ class CreateDeckRecipeWebviewTest extends StatelessWidget {
   }
 }
 
+// デッキレシピを確認する
+class DetailDeckRecipeWebviewTest extends StatelessWidget {
+  String url;
+  DetailDeckRecipeWebviewTest(this.url);
+
+  @override
+  Widget build(BuildContext context) {
+    return WillPopScope(
+      onWillPop: () async {
+        FlutterWebviewPlugin()
+            .close(); // Close the plugin so that it doesn't overlay anymore
+        return true;
+      },
+      child: WebviewScaffold(
+        appBar: AppBar(
+          title: Text("デッキレシピ 確認"),
+        ),
+        url: url,
+      ),
+    );
+  }
+}
+
 class ListApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
