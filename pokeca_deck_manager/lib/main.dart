@@ -219,13 +219,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       ));
                 },
                 onReorder: (int oldIndex, int newIndex) {
-                  setState(() {
-                    // if (oldIndex < newIndex) {
-                    //   newIndex -= 1;
-                    // }
-                    // final int item = _items.removeAt(oldIndex);
-                    // _items.insert(newIndex, item);
-                  });
+                  if (oldIndex < newIndex) {
+                    newIndex -= 1;
+                  }
+                  final DeckRecipeModel item = _deckList.removeAt(oldIndex);
+                  _deckList.insert(newIndex, item);
                 },
               ),
             ),
