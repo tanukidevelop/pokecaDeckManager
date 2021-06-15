@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
+import 'detail.dart';
+
 void main() {
   runApp(ListApp());
 }
@@ -145,6 +147,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         deckModel.createDate.toString()),
                     onTap: () {
                       print("onTap called.");
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => DetailPage()),
+                      );
                     }, // タップ
                     onLongPress: () {
                       print("onLongPress called.");

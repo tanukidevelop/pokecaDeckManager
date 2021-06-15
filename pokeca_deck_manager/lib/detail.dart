@@ -1,0 +1,107 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'main.dart';
+
+class DetailPage extends StatelessWidget {
+  var deckModel = DeckRecipeModel(
+      deckName: "ハイクラスデッキ インテレオンVmaxデッキ",
+      deckCode: "9QgnQn-aPourR-gLgn9i",
+      deckMemo:
+          "ハイクラスデッキ インテレオンVmaxデッキハイクラスデッキ インテレオンVmaxデッキハイクラスデッキ インテレオンVmaxデッキハイクラスデッキ インテレオンVmaxデッキハイクラスデッキ インテレオンVmaxデッキハイクラスデッキ インテレオンVmaxデッキ",
+      createDate: "2021年6月15日");
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('デッキレシピ詳細'),
+      ),
+      body: Center(
+        child: Column(
+          children: <Widget>[
+            Spacer(
+              flex: 1,
+            ),
+            SizedBox(
+                width: double.infinity,
+                child: Text(' ▼デッキ名',
+                    style: TextStyle(
+                        fontFamily: 'Code128',
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.left)),
+            SizedBox(
+                width: double.infinity,
+                child: Text(' ' + deckModel.deckName.toString(),
+                    style: TextStyle(
+                        fontFamily: 'Code128',
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.normal),
+                    textAlign: TextAlign.left)),
+            Spacer(
+              flex: 5,
+            ),
+            new Divider(color: Colors.black),
+            SizedBox(
+                width: double.infinity,
+                child: Text(' ▼デッキコード',
+                    style: TextStyle(
+                        fontFamily: 'Code128',
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.left)),
+            SizedBox(
+                width: double.infinity,
+                child: Text(' ' + deckModel.deckCode.toString(),
+                    style: TextStyle(
+                        fontFamily: 'Code128',
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.normal),
+                    textAlign: TextAlign.left)),
+            Spacer(
+              flex: 5,
+            ),
+            new Divider(color: Colors.black),
+            SizedBox(
+                width: double.infinity,
+                child: Text(' ▼メモ',
+                    style: TextStyle(
+                        fontFamily: 'Code128',
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.left)),
+            SizedBox(
+                width: double.infinity,
+                height: 180, // Widgetの幅を指定
+
+                child: Text(' ' + deckModel.deckMemo.toString(),
+                    style: TextStyle(
+                        fontFamily: 'Code128',
+                        fontSize: 17.0,
+                        fontWeight: FontWeight.normal),
+                    textAlign: TextAlign.left)),
+            Spacer(
+              flex: 5,
+            ),
+            new Divider(color: Colors.black),
+            Image.network(
+                'https://www.pokemon-card.com/deck/deckView.php/deckID/' +
+                    deckModel.deckCode.toString() +
+                    '.png'),
+            Spacer(
+              flex: 5,
+            ),
+            new Divider(color: Colors.black),
+
+            Spacer(flex: 100),
+
+            // Text(
+            //   '$_counter',
+            //   style: Theme.of(context).textTheme.headline4,
+            // ),
+          ],
+        ),
+      ),
+    );
+  }
+}
