@@ -28,15 +28,6 @@ class CreateDeckRecipeWebviewTest extends StatelessWidget {
 }
 
 class ListApp extends StatelessWidget {
-  List<DeckRecipeModel> _deckList = [
-    DeckRecipeModel(
-        deckName: "1", deckCode: "11", deckMemo: "111", createDate: "1111"),
-    DeckRecipeModel(
-        deckName: "2", deckCode: "22", deckMemo: "222", createDate: "2222"),
-    DeckRecipeModel(
-        deckName: "3", deckCode: "33", deckMemo: "333", createDate: "3333")
-  ];
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -78,6 +69,24 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    List<DeckRecipeModel> _deckList = [
+      DeckRecipeModel(
+          deckName: "ハイクラスデッキ インテレオンVmaxデッキ",
+          deckCode: "xYcxcx-bj7co1-8D8c8G",
+          deckMemo: "",
+          createDate: "2021年6月15日"),
+      DeckRecipeModel(
+          deckName: "ハイクラスデッキ ゲンガーVmaxデッキ",
+          deckCode: "xYcxcx-bj7co1-8D8c8G",
+          deckMemo: "",
+          createDate: "2021年6月15日"),
+      DeckRecipeModel(
+          deckName: "オーロンゲVmaxデッキ",
+          deckCode: "xYcxcx-bj7co1-8D8c8G",
+          deckMemo: "",
+          createDate: "2021年6月15日"),
+    ];
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true, // 中央寄せを解除
@@ -122,11 +131,18 @@ class _MyHomePageState extends State<MyHomePage> {
               //Flexibleでラップ
               child: ListView.builder(
                 itemBuilder: (BuildContext context, int index) {
+                  final DeckRecipeModel deckModel = _deckList[index];
                   return Card(
                       child: ListTile(
-                    title: Text("デッキ名：なんだかんだほんにゃ"),
-                    subtitle:
-                        Text("デッキコード:asasasa-asasasa-asasasas  作成日:2021年6月15日"),
+                    title: Text(
+                      deckModel.deckName.toString(),
+                      style: new TextStyle(
+                          fontSize: 15.0, fontWeight: FontWeight.bold),
+                    ),
+                    subtitle: Text("デッキコード：" +
+                        deckModel.deckCode.toString() +
+                        " 作成日:" +
+                        deckModel.createDate.toString()),
                     onTap: () {
                       print("onTap called.");
                     }, // タップ
@@ -135,7 +151,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     }, // 長押し
                   ));
                 },
-                itemCount: 10,
+                itemCount: _deckList.length,
               ),
             ),
 
