@@ -132,20 +132,6 @@ class _MyHomePageState extends State<MyHomePage> {
           }),
         ),
         title: Text(widget.title),
-        actions: <Widget>[
-          // IconButton(
-          //   icon: Icon(Icons.add),
-          //   onPressed: () => setState(() {
-          //     // _count++;
-          //   }),
-          // ),
-          // IconButton(
-          //   icon: Icon(Icons.remove),
-          //   onPressed: () => setState(() {
-          //     // _count--;
-          //   }),
-          // ),
-        ],
       ),
       body: Center(
         child: Column(
@@ -239,8 +225,13 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        onPressed: () => setState(() {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => CreateDeckRecipeWebviewTest()));
+          print("tapped");
+        }),
         child: Icon(Icons.add),
       ),
     );
