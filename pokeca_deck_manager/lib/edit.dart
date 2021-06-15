@@ -63,24 +63,57 @@ class EditPage extends StatelessWidget {
             Spacer(
               flex: 5,
             ),
-            RaisedButton(
-              child: const Text('ブラウザでデッキレシピを開く'),
-              color: Colors.blue,
-              textColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              onPressed: () {
-                final String url =
-                    'https://www.pokemon-card.com/deck/confirm.html/deckID/' +
-                        deckModel.deckCode.toString();
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            DetailDeckRecipeWebviewTest(url)));
-              },
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Spacer(
+                  flex: 30,
+                ),
+                RaisedButton(
+                  child: const Text('　　　更新　　　'),
+                  color: Colors.blue,
+                  textColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  onPressed: () {
+                    final String url =
+                        'https://www.pokemon-card.com/deck/confirm.html/deckID/' +
+                            deckModel.deckCode.toString();
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                DetailDeckRecipeWebviewTest(url)));
+                  },
+                ),
+                Spacer(
+                  flex: 5,
+                ),
+                RaisedButton(
+                  child: const Text('デッキレシピ削除'),
+                  color: Colors.red,
+                  textColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  onPressed: () {
+                    final String url =
+                        'https://www.pokemon-card.com/deck/confirm.html/deckID/' +
+                            deckModel.deckCode.toString();
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                DetailDeckRecipeWebviewTest(url)));
+                  },
+                ),
+                Spacer(
+                  flex: 30,
+                ),
+              ],
             ),
+
             Spacer(flex: 100),
 
             // Text(
