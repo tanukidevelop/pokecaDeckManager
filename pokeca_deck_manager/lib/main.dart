@@ -176,24 +176,28 @@ class _MyHomePageState extends State<MyHomePage> {
                             "\n"
                                 "作成日：" +
                             deckModel.createDate.toString()),
-                        trailing: RaisedButton(
-                          child: const Icon(Icons.create_sharp),
-                          color: Colors.blue,
-                          textColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
+                        trailing: SizedBox(
+                          width: 50,
+                          child: RaisedButton(
+                            child: const Icon(Icons.create_sharp),
+                            color: Colors.blue,
+                            textColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            onPressed: () {
+                              final DeckRecipeModel editDeckModel =
+                                  _deckList[index];
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        EditPage(editDeckModel)),
+                              );
+                            },
                           ),
-                          onPressed: () {
-                            final DeckRecipeModel editDeckModel =
-                                _deckList[index];
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      EditPage(editDeckModel)),
-                            );
-                          },
                         ),
+
                         onTap: () {
                           print("onTap called.");
                           final DeckRecipeModel tapDeckModel = _deckList[index];
