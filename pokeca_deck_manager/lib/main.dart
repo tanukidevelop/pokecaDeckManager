@@ -60,7 +60,7 @@ class ListApp extends StatelessWidget {
       theme: ThemeData(
           // primarySwatch: Colors.blue, scaffoldBackgroundColor: Colors.white),
           primarySwatch: Colors.blue),
-      home: MyHomePage(title: 'デッキレシピ一覧'),
+      home: MyHomePage(title: 'デッキレシピ 一覧'),
     );
   }
 }
