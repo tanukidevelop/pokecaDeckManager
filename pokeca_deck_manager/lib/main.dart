@@ -121,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
         // 左側のアイコン
         leading: IconButton(
-          icon: Image.asset('images/sample.jpg'),
+          icon: Icon(Icons.add_box_outlined ),
           onPressed: () => setState(() {
             Navigator.push(
                 context,
