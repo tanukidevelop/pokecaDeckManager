@@ -158,42 +158,53 @@ class _MyHomePageState extends State<MyHomePage> {
                     textAlign: TextAlign.right)),
             Flexible(
               //Flexibleでラップ
-              child: ListView.builder(
+              child: ReorderableListView.builder(
+                padding: const EdgeInsets.symmetric(horizontal: 40),
+                itemCount: 3,
                 itemBuilder: (BuildContext context, int index) {
-                  final DeckRecipeModel deckModel = _deckList[index];
+                  DeckRecipeModel deckModel = _deckList[index];
                   return Card(
+                      key: Key(deckModel.deckName.toString()),
                       child: ListTile(
-                    title: Text(
-                      deckModel.deckName.toString(),
-                      style: new TextStyle(
-                          fontSize: 15.0, fontWeight: FontWeight.bold),
-                    ),
-                    subtitle: Text("デッキコード：" +
-                        deckModel.deckCode.toString() +
-                        "\n"
-                            "作成日：" +
-                        deckModel.createDate.toString()),
-                    onTap: () {
-                      print("onTap called.");
-                      final DeckRecipeModel tapDeckModel = _deckList[index];
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => DetailPage(tapDeckModel)),
-                      );
-                    }, // タップ
-                    onLongPress: () {
-                      print("onLongPress called.");
-                      final DeckRecipeModel tapDeckModel = _deckList[index];
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => EditPage(tapDeckModel)),
-                      );
-                    }, // 長押し
-                  ));
+                        title: Text(
+                          deckModel.deckName.toString(),
+                          style: new TextStyle(
+                              fontSize: 15.0, fontWeight: FontWeight.bold),
+                        ),
+                        subtitle: Text("デッキコード：" +
+                            deckModel.deckCode.toString() +
+                            "\n"
+                                "作成日：" +
+                            deckModel.createDate.toString()),
+                        onTap: () {
+                          print("onTap called.");
+                          final DeckRecipeModel tapDeckModel = _deckList[index];
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DetailPage(tapDeckModel)),
+                          );
+                        }, // タップ
+                        // onLongPress: () {
+                        //   print("onLongPress called.");
+                        //   final DeckRecipeModel tapDeckModel = _deckList[index];
+                        //   Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) => EditPage(tapDeckModel)),
+                        //   );
+                        // }, // 長押し
+                      ));
                 },
-                itemCount: _deckList.length,
+                onReorder: (int oldIndex, int newIndex) {
+                  setState(() {
+                    // if (oldIndex < newIndex) {
+                    //   newIndex -= 1;
+                    // }
+                    // final int item = _items.removeAt(oldIndex);
+                    // _items.insert(newIndex, item);
+                  });
+                },
               ),
             ),
 
