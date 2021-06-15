@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(ListApp());
 }
 
 // デッキレシピを新規作成する
@@ -27,7 +27,7 @@ class CreateDeckRecipeWebviewTest extends StatelessWidget {
   }
 }
 
-class MyApp extends StatelessWidget {
+class ListApp extends StatelessWidget {
   List<DeckRecipeModel> _deckList = [
     DeckRecipeModel(
         deckName: "1", deckCode: "11", deckMemo: "111", createDate: "1111"),
