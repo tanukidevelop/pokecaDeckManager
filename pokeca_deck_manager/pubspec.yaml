@@ -1,4 +1,4 @@
-name: poceka_deck_manager
+name: pokeca_deck_manager
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -38,10 +38,10 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-  fonts:
-  - family: BrowserIcon
-    fonts:
-      - asset: fonts/BrowserIcon.ttf
+  # fonts:
+  # - family: BrowserIcon
+  #   fonts:
+  #     - asset: fonts/BrowserIcon.ttf
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -49,8 +49,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   # ↓この部分を追加する↓
-  # assets:
-  #   - images/
+  assets:
+    - images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

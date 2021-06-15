@@ -1,6 +1,6 @@
 {
-    "name": "poceka_deck_manager",
-    "short_name": "poceka_deck_manager",
+    "name": "pokeca_deck_manager",
+    "short_name": "pokeca_deck_manager",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

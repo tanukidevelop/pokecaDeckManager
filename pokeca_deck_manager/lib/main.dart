@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:poceka_deck_manager/browser_icon_icons.dart';
 
 void main() {
   runApp(MyApp());
@@ -62,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
         // 左側のアイコン
         leading: IconButton(
-          icon: Icon(BrowserIcon.language),
+          icon: Image.asset('images/sample.jpg'),
           onPressed: () => setState(() {
             // _count++;
           }),
