@@ -171,11 +171,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           style: new TextStyle(
                               fontSize: 15.0, fontWeight: FontWeight.bold),
                         ),
-                        subtitle: Text("デッキコード：" +
-                            deckModel.deckCode.toString() +
-                            "\n"
-                                "作成日：" +
-                            deckModel.createDate.toString()),
+                        subtitle: Text(
+                            "デッキコード：" +
+                                deckModel.deckCode.toString() +
+                                "\n"
+                                    "作成日：" +
+                                deckModel.createDate.toString(),
+                            style: new TextStyle(
+                                fontSize: 10.0, fontWeight: FontWeight.bold)),
                         trailing: SizedBox(
                           width: 50,
                           child: RaisedButton(
