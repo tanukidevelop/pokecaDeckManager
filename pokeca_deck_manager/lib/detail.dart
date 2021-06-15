@@ -11,6 +11,13 @@ class DetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('デッキレシピ 詳細'),
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.share),
+              onPressed: () => {
+                    // _count++;
+                  }),
+        ],
       ),
       body: Center(
         child: Column(
