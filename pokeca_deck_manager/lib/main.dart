@@ -1,7 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
 void main() {
   runApp(MyApp());
+}
+
+// WebViewのWidgit
+class WebViewSample extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new WebviewScaffold(
+      url: "https://www.google.com/",
+      appBar: new AppBar(
+        title: const Text('WebView Sample'),
+      ),
+      withJavascript: true,
+      withLocalStorage: true,
+      hidden: true,
+      initialChild: Container(
+        color: Colors.redAccent,
+        child: const Center(
+          child: Text('Waiting.....'),
+        ),
+      ),
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -64,6 +87,11 @@ class _MyHomePageState extends State<MyHomePage> {
           icon: Image.asset('images/sample.jpg'),
           onPressed: () => setState(() {
             // _count++;
+            print("tapped");
+            final flutterWebviewPlugin = new FlutterWebviewPlugin();
+            flutterWebviewPlugin.launch(
+                "https://cyublog.com/articles/flutter-ja/flutter-webview-plugin/",
+                hidden: true);
           }),
         ),
         title: Text(widget.title),
