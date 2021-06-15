@@ -153,7 +153,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             SizedBox(
                 width: double.infinity,
-                child: Text('デッキレシピが表示されている行を長押しすると編集ができます。     　 ',
+                child: Text('デッキレシピが表示されている行を長押し中に移動すると並び替えできます。     　 ',
                     style: TextStyle(fontFamily: 'Code128', fontSize: 10.0),
                     textAlign: TextAlign.right)),
             Flexible(
