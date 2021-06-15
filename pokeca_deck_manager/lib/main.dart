@@ -226,12 +226,11 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => setState(() {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => AddPage()));
-          print("tapped");
-        }),
         child: Icon(Icons.add),
+        onPressed: () => {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => AddPage()))
+        },
       ),
     );
   }
