@@ -98,17 +98,20 @@ class _MyHomePageState extends State<MyHomePage> {
       DeckRecipeModel(
           deckName: "ハイクラスデッキ インテレオンVmaxデッキ",
           deckCode: "xYcxcx-bj7co1-8D8c8G",
-          deckMemo: "",
+          deckMemo:
+              "ハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキ",
           createDate: "2021年6月15日"),
       DeckRecipeModel(
           deckName: "ハイクラスデッキ ゲンガーVmaxデッキ",
           deckCode: "xYcxcx-bj7co1-8D8c8G",
-          deckMemo: "",
+          deckMemo:
+              "ハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキ",
           createDate: "2021年6月15日"),
       DeckRecipeModel(
           deckName: "オーロンゲVmaxデッキ",
           deckCode: "xYcxcx-bj7co1-8D8c8G",
-          deckMemo: "",
+          deckMemo:
+              "ハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキ",
           createDate: "2021年6月15日"),
     ];
 

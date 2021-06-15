@@ -68,7 +68,7 @@ class DetailPage extends StatelessWidget {
                     textAlign: TextAlign.left)),
             SizedBox(
                 width: double.infinity,
-                height: 120, // Widgetの幅を指定
+                height: 100, // Widgetの幅を指定
                 child: Text(' ' + deckModel.deckMemo.toString(),
                     style: TextStyle(
                         fontFamily: 'Code128',
