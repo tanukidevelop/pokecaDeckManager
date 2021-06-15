@@ -86,37 +86,38 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
+  List<DeckRecipeModel> _deckList = [
+    DeckRecipeModel(
+        deckName: "ハイクラスデッキ インテレオンVmaxデッキ",
+        deckCode: "xYcxcx-bj7co1-8D8c8G",
+        deckMemo:
+            "ハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキ",
+        createDate: "2021年6月15日"),
+    DeckRecipeModel(
+        deckName: "ハイクラスデッキ ゲンガーVmaxデッキ",
+        deckCode: "xYcxcx-bj7co1-8D8c8G",
+        deckMemo:
+            "ハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキ",
+        createDate: "2021年6月15日"),
+    DeckRecipeModel(
+        deckName: "オーロンゲVmaxデッキ",
+        deckCode: "xYcxcx-bj7co1-8D8c8G",
+        deckMemo:
+            "ハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキ",
+        createDate: "2021年6月15日"),
+  ];
+  void _SwapList(int oldIndex, int newIndex) {
     setState(() {
-      _counter++;
+      if (oldIndex < newIndex) {
+        newIndex -= 1;
+      }
+      final DeckRecipeModel item = _deckList.removeAt(oldIndex);
+      _deckList.insert(newIndex, item);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    List<DeckRecipeModel> _deckList = [
-      DeckRecipeModel(
-          deckName: "ハイクラスデッキ インテレオンVmaxデッキ",
-          deckCode: "xYcxcx-bj7co1-8D8c8G",
-          deckMemo:
-              "ハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキ",
-          createDate: "2021年6月15日"),
-      DeckRecipeModel(
-          deckName: "ハイクラスデッキ ゲンガーVmaxデッキ",
-          deckCode: "xYcxcx-bj7co1-8D8c8G",
-          deckMemo:
-              "ハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキ",
-          createDate: "2021年6月15日"),
-      DeckRecipeModel(
-          deckName: "オーロンゲVmaxデッキ",
-          deckCode: "xYcxcx-bj7co1-8D8c8G",
-          deckMemo:
-              "ハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキ",
-          createDate: "2021年6月15日"),
-    ];
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true, // 中央寄せを解除
@@ -209,11 +210,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ));
                 },
                 onReorder: (int oldIndex, int newIndex) {
-                  if (oldIndex < newIndex) {
-                    newIndex -= 1;
-                  }
-                  final DeckRecipeModel item = _deckList.removeAt(oldIndex);
-                  _deckList.insert(newIndex, item);
+                  _SwapList(oldIndex, newIndex);
                 },
               ),
             ),
@@ -228,8 +225,9 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () => {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => AddPage()))
+          setState(() {}),
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => AddPage(_deckList)))
         },
       ),
     );
