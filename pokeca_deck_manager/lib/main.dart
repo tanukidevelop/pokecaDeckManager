@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:shared_preferences/shared_preferences.dart'; // 追記する
+import 'dart:convert';
+import 'package:json_annotation/json_annotation.dart';
 
 import 'detail.dart';
 import 'edit.dart';
@@ -82,6 +85,19 @@ class DeckRecipeModel {
   String? createDate = "";
   DeckRecipeModel(
       {this.deckName, this.deckCode, this.deckMemo, this.createDate});
+
+  DeckRecipeModel.fromJson(Map<String, dynamic> json)
+      : deckName = json['name'],
+        deckCode = json['deckCode'],
+        deckMemo = json['deckMemo'],
+        createDate = json['createDate'];
+
+  Map<String, dynamic> toJson() => {
+        "deckName": deckName,
+        "deckCode": deckCode,
+        "deckMemo": deckMemo,
+        "createDate": createDate
+      };
 }
 
 class MyHomePage extends StatefulWidget {
@@ -257,14 +273,25 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
           onPressed: () async {
-            final result = await Navigator.pushNamed(context, '/next');
-            final dict = result as Map;
-            final deckModel = DeckRecipeModel(
-                deckName: result["deckName"].toString(),
-                deckCode: result["deckCode"].toString(),
-                deckMemo: result["deckMemo"].toString(),
-                createDate: result["createDate"].toString());
-            _AddList(deckModel);
+            // SharedPreferences prefs = await SharedPreferences.getInstance();
+            // final String entriesJson =
+            //     json.encode(_deckList.map((entry) => entry.toJson()).toList());
+            // prefs.setString('entries', entriesJson);
+            // final String? savedEntriesJson = prefs.getString("entries");
+            // final List<dynamic> entriesDeserialized =
+            //     json.decode(savedEntriesJson!);
+            // List<DeckRecipeModel> deserializedEntries = entriesDeserialized
+            //     .map((json) => DeckRecipeModel.fromJson(json))
+            //     .toList();
+
+            // final result = await Navigator.pushNamed(context, '/next');
+            // final dict = result as Map;
+            // final deckModel = DeckRecipeModel(
+            //     deckName: result["deckName"].toString(),
+            //     deckCode: result["deckCode"].toString(),
+            //     deckMemo: result["deckMemo"].toString(),
+            //     createDate: result["createDate"].toString());
+            // _AddList(deckModel);
           }),
     );
   }
