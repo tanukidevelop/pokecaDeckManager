@@ -222,11 +222,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   DeckRecipeModel deckModel = _deckList[index];
                   return Dismissible(
                     key: Key("$index"),
-                    onDismissed: (direction) {
+                    onDismissed: (direction) async {
                       setState(() {
                         // スワイプされた要素をデータから削除する
                         _deckList.removeAt(index);
                       });
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      final String entriesJson = json.encode(
+                          _deckList.map((entry) => entry.toJson()).toList());
+                      prefs.setString('deckList', entriesJson);
                       // スワイプ方向がendToStart（画面左から右）の場合の処理
                       if (direction == DismissDirection.endToStart) {
                         Scaffold.of(context)
