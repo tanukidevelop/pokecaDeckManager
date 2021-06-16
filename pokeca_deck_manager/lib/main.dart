@@ -109,29 +109,24 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  // List<DeckRecipeModel> _deckList = [];
   List<DeckRecipeModel> _deckList = [
     DeckRecipeModel(
         deckName: "ハイクラスデッキ インテレオンVmaxデッキ",
         deckCode: "xYcxcx-bj7co1-8D8c8G",
         deckMemo:
-            "ハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキ",
-        createDate: "2021年6月15日"),
+            "強さだけを追求し、最高の一撃を極めるバトルスタイルである、「いちげき」のカードを中心に構築されたデッキ。「いちげき」のカード同士で相乗効果を生みながら、ゲンガーVMAXのワザで大ダメージを与え、相手をきぜつさせる動きが強力！",
+        createDate: "2021年5月28日"),
     DeckRecipeModel(
         deckName: "ハイクラスデッキ ゲンガーVmaxデッキ",
-        deckCode: "xYcxcx-bj7co1-8D8c8G",
+        deckCode: "MpyXMR-GqDfQq-pSpUpE",
         deckMemo:
-            "ハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキ",
-        createDate: "2021年6月15日"),
-    DeckRecipeModel(
-        deckName: "オーロンゲVmaxデッキ",
-        deckCode: "xYcxcx-bj7co1-8D8c8G",
-        deckMemo:
-            "ハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキハイクラスデッキ ゲンガーVmaxデッキ",
-        createDate: "2021年6月15日"),
+            "「ハイクラスデッキ インテレオンVMAX」は、予測不可能な動きで敵の虚をついて、柔軟で鋭いワザを浴びせかけるバトルスタイルである、「れんげき」のカードを中心に構築されたデッキ。「れんげき」のカード同士で相乗効果を生みながら、インテレオンVMAXの特性やワザを使いこなすと強力！",
+        createDate: "2021年5月28日")
   ];
 
   void _editList(Map<String, dynamic> map, int index) {
-    setState(() {
+    setState(() async {
       final bool isEdit = map["isEdit"];
       if (isEdit == true) {
         DeckRecipeModel editDeckModel = _deckList[index];
