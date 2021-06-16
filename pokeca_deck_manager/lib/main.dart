@@ -227,10 +227,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     'デッキレシピを長押し中に移動すると並び替え,\nデッキレシピをスワイプすると削除ができます。     　 ',
                     style: TextStyle(fontFamily: 'Code128', fontSize: 10.0),
                     textAlign: TextAlign.right)),
-            Flexible(
+            Expanded(
               //Flexibleでラップ
               child: ReorderableListView.builder(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
+                padding: const EdgeInsets.symmetric(horizontal: 5),
                 itemCount: _deckList.length,
                 itemBuilder: (BuildContext context, int index) {
                   DeckRecipeModel deckModel = _deckList[index];
