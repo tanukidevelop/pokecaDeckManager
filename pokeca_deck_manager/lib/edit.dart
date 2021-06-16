@@ -99,7 +99,6 @@ class EditPage extends StatelessWidget {
                   ),
                   onPressed: () {
                     Map<String, dynamic> map = {
-                      'isEdit': true,
                       'deckName': deckName,
                       'deckCode': deckCode,
                       'deckMemo': deckMemo,
@@ -109,18 +108,6 @@ class EditPage extends StatelessWidget {
                 ),
                 Spacer(
                   flex: 5,
-                ),
-                RaisedButton(
-                  child: const Text('デッキレシピ削除'),
-                  color: Colors.red,
-                  textColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  onPressed: () {
-                    Map<String, dynamic> map = {'isEdit': false};
-                    Navigator.pop(context, map);
-                  },
                 ),
                 Spacer(
                   flex: 30,

@@ -127,16 +127,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _editList(Map<String, dynamic> map, int index) {
     setState(() async {
-      final bool isEdit = map["isEdit"];
-      if (isEdit == true) {
-        DeckRecipeModel editDeckModel = _deckList[index];
-        editDeckModel.deckName = map["deckName"];
-        editDeckModel.deckCode = map["deckCode"];
-        editDeckModel.deckMemo = map["deckMemo"];
-      } else {
-        _deckList.removeAt(index);
-        print(_deckList);
-      }
+      DeckRecipeModel editDeckModel = _deckList[index];
+      editDeckModel.deckName = map["deckName"];
+      editDeckModel.deckCode = map["deckCode"];
+      editDeckModel.deckMemo = map["deckMemo"];
 
       // 保存
       SharedPreferences prefs = await SharedPreferences.getInstance();
