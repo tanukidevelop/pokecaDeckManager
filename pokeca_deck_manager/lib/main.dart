@@ -87,7 +87,7 @@ class DeckRecipeModel {
       {this.deckName, this.deckCode, this.deckMemo, this.createDate});
 
   DeckRecipeModel.fromJson(Map<String, dynamic> json)
-      : deckName = json['name'],
+      : deckName = json['deckName'],
         deckCode = json['deckCode'],
         deckMemo = json['deckMemo'],
         createDate = json['createDate'];
@@ -139,19 +139,30 @@ class _MyHomePageState extends State<MyHomePage> {
         editDeckModel.deckCode = map["deckCode"];
         editDeckModel.deckMemo = map["deckMemo"];
       } else {
-        // _deckList.remove(index);
-        // print(_deckList)
+        _deckList.removeAt(index);
+        print(_deckList);
       }
+
+      // 保存
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      final String entriesJson =
+          json.encode(_deckList.map((entry) => entry.toJson()).toList());
+      prefs.setString('deckList', entriesJson);
     });
   }
 
-  void _AddList(DeckRecipeModel deckModel) {
+  Future<void> _AddList(DeckRecipeModel deckModel) async {
     setState(() {
       _deckList.add(deckModel);
     });
+    // 保存
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String entriesJson =
+        json.encode(_deckList.map((entry) => entry.toJson()).toList());
+    prefs.setString('deckList', entriesJson);
   }
 
-  void _SwapList(int oldIndex, int newIndex) {
+  Future<void> _SwapList(int oldIndex, int newIndex) async {
     setState(() {
       if (oldIndex < newIndex) {
         newIndex -= 1;
@@ -159,6 +170,32 @@ class _MyHomePageState extends State<MyHomePage> {
       final DeckRecipeModel item = _deckList.removeAt(oldIndex);
       _deckList.insert(newIndex, item);
     });
+    // 保存
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String entriesJson =
+        json.encode(_deckList.map((entry) => entry.toJson()).toList());
+    prefs.setString('deckList', entriesJson);
+  }
+
+  // 初回のみアプリ内のデータを読み取っている
+  _readSaveList() async {
+    // 読み取り
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String? savedEntriesJson = prefs.getString("deckList");
+    final List<dynamic> entriesDeserialized = json.decode(savedEntriesJson!);
+    List<DeckRecipeModel> deserializedEntries = entriesDeserialized
+        .map((json) => DeckRecipeModel.fromJson(json))
+        .toList();
+    setState(() {
+      _deckList = deserializedEntries;
+    });
+  }
+
+  //ここが重要
+  @override
+  void initState() {
+    //アプリ起動時に一度だけ実行される
+    _readSaveList();
   }
 
   @override
@@ -273,25 +310,14 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
           onPressed: () async {
-            SharedPreferences prefs = await SharedPreferences.getInstance();
-            final String entriesJson =
-                json.encode(_deckList.map((entry) => entry.toJson()).toList());
-            prefs.setString('entries', entriesJson);
-            final String? savedEntriesJson = prefs.getString("entries");
-            final List<dynamic> entriesDeserialized =
-                json.decode(savedEntriesJson!);
-            List<DeckRecipeModel> deserializedEntries = entriesDeserialized
-                .map((json) => DeckRecipeModel.fromJson(json))
-                .toList();
-
-            // final result = await Navigator.pushNamed(context, '/next');
-            // final dict = result as Map;
-            // final deckModel = DeckRecipeModel(
-            //     deckName: result["deckName"].toString(),
-            //     deckCode: result["deckCode"].toString(),
-            //     deckMemo: result["deckMemo"].toString(),
-            //     createDate: result["createDate"].toString());
-            // _AddList(deckModel);
+            final result = await Navigator.pushNamed(context, '/next');
+            final dict = result as Map;
+            final deckModel = DeckRecipeModel(
+                deckName: result["deckName"].toString(),
+                deckCode: result["deckCode"].toString(),
+                deckMemo: result["deckMemo"].toString(),
+                createDate: result["createDate"].toString());
+            _AddList(deckModel);
           }),
     );
   }
