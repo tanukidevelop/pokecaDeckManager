@@ -229,7 +229,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 itemBuilder: (BuildContext context, int index) {
                   DeckRecipeModel deckModel = _deckList[index];
                   return Card(
-                      key: Key(deckModel.deckName.toString()),
+                      key: Key("$index"),
                       child: ListTile(
                         title: Text(
                           deckModel.deckName.toString(),
