@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.pokeca_deck_manager">
+        <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="pokeca_deck_manager"
         android:icon="@mipmap/ic_launcher">
