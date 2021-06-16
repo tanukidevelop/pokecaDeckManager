@@ -15,6 +15,7 @@ class EditPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text('デッキレシピ 編集'),
       ),
       body: Center(

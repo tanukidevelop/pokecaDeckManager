@@ -12,6 +12,7 @@ class AddPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text('新規デッキレシピ'),
       ),
       body: Center(

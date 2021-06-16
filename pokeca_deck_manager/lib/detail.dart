@@ -11,6 +11,7 @@ class DetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text('デッキレシピ 詳細'),
         actions: <Widget>[
           IconButton(

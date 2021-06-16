@@ -3,6 +3,7 @@ import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:shared_preferences/shared_preferences.dart'; // 追記する
 import 'dart:convert';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'detail.dart';
 import 'edit.dart';
@@ -26,7 +27,10 @@ class CreateDeckRecipeWebviewTest extends StatelessWidget {
       },
       child: WebviewScaffold(
         appBar: AppBar(
-          title: Text("デッキレシピ 新規作成"),
+          centerTitle: true,
+          title: Text(
+            "デッキレシピ 新規作成",
+          ),
         ),
         url: url,
       ),
@@ -49,6 +53,7 @@ class DetailDeckRecipeWebviewTest extends StatelessWidget {
       },
       child: WebviewScaffold(
         appBar: AppBar(
+          centerTitle: true,
           title: Text("デッキレシピ 確認"),
         ),
         url: url,
@@ -60,7 +65,16 @@ class DetailDeckRecipeWebviewTest extends StatelessWidget {
 class ListApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    const locale = Locale("ja", "JP");
     return MaterialApp(
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        locale,
+      ],
       initialRoute: '/',
       routes: {
         '/next': (context) => AddPage(),
