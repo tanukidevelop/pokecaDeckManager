@@ -251,9 +251,6 @@ class _MyHomePageState extends State<MyHomePage> {
                         Scaffold.of(context)
                             .showSnackBar(SnackBar(content: Text("削除しました")));
                         // スワイプ方向がstartToEnd（画面右から左）の場合の処理
-                      } else {
-                        Scaffold.of(context)
-                            .showSnackBar(SnackBar(content: Text("登録しました")));
                       }
                     },
                     child: Card(
