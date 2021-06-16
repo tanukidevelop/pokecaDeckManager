@@ -273,16 +273,16 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
           onPressed: () async {
-            // SharedPreferences prefs = await SharedPreferences.getInstance();
-            // final String entriesJson =
-            //     json.encode(_deckList.map((entry) => entry.toJson()).toList());
-            // prefs.setString('entries', entriesJson);
-            // final String? savedEntriesJson = prefs.getString("entries");
-            // final List<dynamic> entriesDeserialized =
-            //     json.decode(savedEntriesJson!);
-            // List<DeckRecipeModel> deserializedEntries = entriesDeserialized
-            //     .map((json) => DeckRecipeModel.fromJson(json))
-            //     .toList();
+            SharedPreferences prefs = await SharedPreferences.getInstance();
+            final String entriesJson =
+                json.encode(_deckList.map((entry) => entry.toJson()).toList());
+            prefs.setString('entries', entriesJson);
+            final String? savedEntriesJson = prefs.getString("entries");
+            final List<dynamic> entriesDeserialized =
+                json.decode(savedEntriesJson!);
+            List<DeckRecipeModel> deserializedEntries = entriesDeserialized
+                .map((json) => DeckRecipeModel.fromJson(json))
+                .toList();
 
             // final result = await Navigator.pushNamed(context, '/next');
             // final dict = result as Map;
