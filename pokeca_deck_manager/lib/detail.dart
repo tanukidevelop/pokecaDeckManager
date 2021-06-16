@@ -16,7 +16,6 @@ class DetailPage extends StatelessWidget {
           IconButton(
               icon: Icon(Icons.share),
               onPressed: () => {
-                    // _count++;
                     Share.share("デッキ名:" +
                         deckModel.deckName.toString() +
                         "\n\nデッキコード:" +
