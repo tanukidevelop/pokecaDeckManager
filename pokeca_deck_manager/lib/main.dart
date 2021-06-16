@@ -63,9 +63,6 @@ class ListApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        // '/': (context) => Screen0(),
-        // '/first': (context) => Screen1(),
-        // '/second': (context) => Screen2(),
         '/next': (context) => AddPage(),
       },
       title: 'Flutter Demo',

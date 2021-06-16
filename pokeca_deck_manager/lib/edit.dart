@@ -80,7 +80,6 @@ class EditPage extends StatelessWidget {
             Spacer(
               flex: 5,
             ),
-            new Divider(color: Colors.black),
             Spacer(
               flex: 5,
             ),
