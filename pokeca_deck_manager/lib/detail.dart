@@ -88,7 +88,7 @@ class DetailPage extends StatelessWidget {
                 child: Text(' ' + deckModel.deckMemo.toString(),
                     style: TextStyle(
                         fontFamily: 'Code128',
-                        fontSize: 15.0,
+                        fontSize: 13.0,
                         fontWeight: FontWeight.normal),
                     textAlign: TextAlign.left)),
             Spacer(
