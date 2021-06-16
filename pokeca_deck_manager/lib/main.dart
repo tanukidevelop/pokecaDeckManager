@@ -228,66 +228,86 @@ class _MyHomePageState extends State<MyHomePage> {
                 itemCount: _deckList.length,
                 itemBuilder: (BuildContext context, int index) {
                   DeckRecipeModel deckModel = _deckList[index];
-                  return Card(
-                      key: Key("$index"),
-                      child: ListTile(
-                        title: Text(
-                          deckModel.deckName.toString(),
-                          style: new TextStyle(
-                              fontSize: 15.0, fontWeight: FontWeight.bold),
-                        ),
-                        subtitle: Text(
-                            "デッキコード：" +
-                                deckModel.deckCode.toString() +
-                                "\n"
-                                    "作成日：" +
-                                deckModel.createDate.toString(),
+                  return Dismissible(
+                    key: Key("$index"),
+                    onDismissed: (direction) {
+                      setState(() {
+                        // スワイプされた要素をデータから削除する
+                        _deckList.removeAt(index);
+                      });
+                      // スワイプ方向がendToStart（画面左から右）の場合の処理
+                      if (direction == DismissDirection.endToStart) {
+                        Scaffold.of(context)
+                            .showSnackBar(SnackBar(content: Text("削除しました")));
+                        // スワイプ方向がstartToEnd（画面右から左）の場合の処理
+                      } else {
+                        Scaffold.of(context)
+                            .showSnackBar(SnackBar(content: Text("登録しました")));
+                      }
+                    },
+                    child: Card(
+                        key: Key("$index"),
+                        child: ListTile(
+                          title: Text(
+                            deckModel.deckName.toString(),
                             style: new TextStyle(
-                                fontSize: 10.0, fontWeight: FontWeight.bold)),
-                        trailing: SizedBox(
-                          width: 50,
-                          child: RaisedButton(
-                            child: const Icon(Icons.create_sharp),
-                            color: Colors.blue,
-                            textColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            onPressed: () {
-                              final DeckRecipeModel editDeckModel =
-                                  _deckList[index];
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          EditPage(editDeckModel))).then(
-                                  (result) => {
-                                        result.cast<String, dynamic>(),
-                                        _editList(result, index)
-                                      });
-                            },
+                                fontSize: 15.0, fontWeight: FontWeight.bold),
                           ),
-                        ),
+                          subtitle: Text(
+                              "デッキコード：" +
+                                  deckModel.deckCode.toString() +
+                                  "\n"
+                                      "作成日：" +
+                                  deckModel.createDate.toString(),
+                              style: new TextStyle(
+                                  fontSize: 10.0, fontWeight: FontWeight.bold)),
+                          trailing: SizedBox(
+                            width: 50,
+                            child: RaisedButton(
+                              child: const Icon(Icons.create_sharp),
+                              color: Colors.blue,
+                              textColor: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              onPressed: () {
+                                final DeckRecipeModel editDeckModel =
+                                    _deckList[index];
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            EditPage(editDeckModel))).then(
+                                    (result) => {
+                                          result.cast<String, dynamic>(),
+                                          _editList(result, index)
+                                        });
+                              },
+                            ),
+                          ),
 
-                        onTap: () {
-                          print("onTap called.");
-                          final DeckRecipeModel tapDeckModel = _deckList[index];
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => DetailPage(tapDeckModel)),
-                          );
-                        }, // タップ
-                        // onLongPress: () {
-                        //   print("onLongPress called.");
-                        //   final DeckRecipeModel tapDeckModel = _deckList[index];
-                        //   Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) => EditPage(tapDeckModel)),
-                        //   );
-                        // }, // 長押し
-                      ));
+                          onTap: () {
+                            print("onTap called.");
+                            final DeckRecipeModel tapDeckModel =
+                                _deckList[index];
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      DetailPage(tapDeckModel)),
+                            );
+                          }, // タップ
+                          // onLongPress: () {
+                          //   print("onLongPress called.");
+                          //   final DeckRecipeModel tapDeckModel = _deckList[index];
+                          //   Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) => EditPage(tapDeckModel)),
+                          //   );
+                          // }, // 長押し
+                        )),
+                  );
                 },
                 onReorder: (int oldIndex, int newIndex) {
                   _SwapList(oldIndex, newIndex);
