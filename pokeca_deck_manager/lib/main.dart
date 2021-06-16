@@ -114,6 +114,21 @@ class _MyHomePageState extends State<MyHomePage> {
         createDate: "2021年6月15日"),
   ];
 
+  void _editList(Map<String, dynamic> map, int index) {
+    setState(() {
+      final bool isEdit = map["isEdit"];
+      if (isEdit == true) {
+        DeckRecipeModel editDeckModel = _deckList[index];
+        editDeckModel.deckName = map["deckName"];
+        editDeckModel.deckCode = map["deckCode"];
+        editDeckModel.deckMemo = map["deckMemo"];
+      } else {
+        _deckList.remove(index);
+      }
+      // _deckList.add(deckModel);
+    });
+  }
+
   void _AddList(DeckRecipeModel deckModel) {
     setState(() {
       _deckList.add(deckModel);
@@ -194,11 +209,14 @@ class _MyHomePageState extends State<MyHomePage> {
                               final DeckRecipeModel editDeckModel =
                                   _deckList[index];
                               Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        EditPage(editDeckModel)),
-                              );
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          EditPage(editDeckModel))).then(
+                                  (result) => {
+                                        result.cast<String, dynamic>(),
+                                        _editList(result, index)
+                                      });
                             },
                           ),
                         ),

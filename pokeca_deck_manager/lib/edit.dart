@@ -8,6 +8,11 @@ class EditPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String deckName = deckModel.deckName.toString();
+    String deckCode = deckModel.deckCode.toString();
+    String deckMemo = deckModel.deckMemo.toString();
+    String createDate = deckModel.createDate.toString();
+
     return Scaffold(
       appBar: AppBar(
         title: Text('デッキレシピ 編集'),
@@ -19,13 +24,17 @@ class EditPage extends StatelessWidget {
               flex: 5,
             ),
             TextFormField(
-                controller: TextEditingController(text: deckModel.deckName),
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(), // 外枠付きデザイン
-                  filled: true, // fillColorで指定した色で塗り潰し
-                  fillColor: Colors.white,
-                  labelText: "デッキ名",
-                )),
+              controller: TextEditingController(text: deckModel.deckName),
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(), // 外枠付きデザイン
+                filled: true, // fillColorで指定した色で塗り潰し
+                fillColor: Colors.white,
+                labelText: "デッキ名",
+              ),
+              onChanged: (text) {
+                deckName = text;
+              },
+            ),
 
             Spacer(
               flex: 5,
@@ -34,13 +43,17 @@ class EditPage extends StatelessWidget {
               flex: 5,
             ),
             TextFormField(
-                controller: TextEditingController(text: deckModel.deckCode),
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(), // 外枠付きデザイン
-                  filled: true, // fillColorで指定した色で塗り潰し
-                  fillColor: Colors.white,
-                  labelText: "デッキコード",
-                )),
+              controller: TextEditingController(text: deckModel.deckCode),
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(), // 外枠付きデザイン
+                filled: true, // fillColorで指定した色で塗り潰し
+                fillColor: Colors.white,
+                labelText: "デッキコード",
+              ),
+              onChanged: (text) {
+                deckCode = text;
+              },
+            ),
             Spacer(
               flex: 5,
             ),
@@ -49,13 +62,18 @@ class EditPage extends StatelessWidget {
             ),
 
             TextFormField(
-                controller: TextEditingController(text: deckModel.deckMemo),
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(), // 外枠付きデザイン
-                  filled: true, // fillColorで指定した色で塗り潰し
-                  fillColor: Colors.white,
-                  labelText: "メモ",
-                )),
+              controller: TextEditingController(text: deckModel.deckMemo),
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(), // 外枠付きデザイン
+                filled: true, // fillColorで指定した色で塗り潰し
+                fillColor: Colors.white,
+                labelText: "メモ",
+              ),
+              onChanged: (text) {
+                deckMemo = text;
+              },
+            ),
+
             Spacer(
               flex: 5,
             ),
@@ -80,14 +98,13 @@ class EditPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   onPressed: () {
-                    final String url =
-                        'https://www.pokemon-card.com/deck/confirm.html/deckID/' +
-                            deckModel.deckCode.toString();
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                DetailDeckRecipeWebviewTest(url)));
+                    Map<String, dynamic> map = {
+                      'isEdit': true,
+                      'deckName': deckName,
+                      'deckCode': deckCode,
+                      'deckMemo': deckMemo,
+                    };
+                    Navigator.pop(context, map);
                   },
                 ),
                 Spacer(
@@ -101,14 +118,8 @@ class EditPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   onPressed: () {
-                    final String url =
-                        'https://www.pokemon-card.com/deck/confirm.html/deckID/' +
-                            deckModel.deckCode.toString();
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                DetailDeckRecipeWebviewTest(url)));
+                    Map<String, dynamic> map = {'isEdit': false};
+                    Navigator.pop(context, map);
                   },
                 ),
                 Spacer(
