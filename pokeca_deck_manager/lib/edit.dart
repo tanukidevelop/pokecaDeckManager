@@ -19,12 +19,13 @@ class EditPage extends StatelessWidget {
               flex: 5,
             ),
             TextFormField(
+                controller: TextEditingController(text: deckModel.deckName),
                 decoration: const InputDecoration(
-              border: OutlineInputBorder(), // 外枠付きデザイン
-              filled: true, // fillColorで指定した色で塗り潰し
-              fillColor: Colors.white,
-              labelText: "デッキ名",
-            )),
+                  border: OutlineInputBorder(), // 外枠付きデザイン
+                  filled: true, // fillColorで指定した色で塗り潰し
+                  fillColor: Colors.white,
+                  labelText: "デッキ名",
+                )),
 
             Spacer(
               flex: 5,
@@ -33,12 +34,13 @@ class EditPage extends StatelessWidget {
               flex: 5,
             ),
             TextFormField(
+                controller: TextEditingController(text: deckModel.deckCode),
                 decoration: const InputDecoration(
-              border: OutlineInputBorder(), // 外枠付きデザイン
-              filled: true, // fillColorで指定した色で塗り潰し
-              fillColor: Colors.white,
-              labelText: "デッキコード",
-            )),
+                  border: OutlineInputBorder(), // 外枠付きデザイン
+                  filled: true, // fillColorで指定した色で塗り潰し
+                  fillColor: Colors.white,
+                  labelText: "デッキコード",
+                )),
             Spacer(
               flex: 5,
             ),
@@ -47,12 +49,13 @@ class EditPage extends StatelessWidget {
             ),
 
             TextFormField(
+                controller: TextEditingController(text: deckModel.deckMemo),
                 decoration: const InputDecoration(
-              border: OutlineInputBorder(), // 外枠付きデザイン
-              filled: true, // fillColorで指定した色で塗り潰し
-              fillColor: Colors.white,
-              labelText: "メモ",
-            )),
+                  border: OutlineInputBorder(), // 外枠付きデザイン
+                  filled: true, // fillColorで指定した色で塗り潰し
+                  fillColor: Colors.white,
+                  labelText: "メモ",
+                )),
             Spacer(
               flex: 5,
             ),
