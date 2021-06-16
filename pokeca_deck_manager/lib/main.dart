@@ -210,7 +210,7 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(
                 width: double.infinity,
                 child: Text(
-                    'デッキレシピを長押し中に移動すると並び替え、デッキレシピをスワイプすると削除ができます。     　 ',
+                    'デッキレシピを長押し中に移動すると並び替え,\nデッキレシピをスワイプすると削除ができます。     　 ',
                     style: TextStyle(fontFamily: 'Code128', fontSize: 10.0),
                     textAlign: TextAlign.right)),
             Flexible(
