@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'main.dart';
+import 'package:share/share.dart';
 
 class DetailPage extends StatelessWidget {
   DeckRecipeModel deckModel;
@@ -16,6 +17,14 @@ class DetailPage extends StatelessWidget {
               icon: Icon(Icons.share),
               onPressed: () => {
                     // _count++;
+                    Share.share("デッキ名:" +
+                        deckModel.deckName.toString() +
+                        "\n\nデッキコード:" +
+                        deckModel.deckCode.toString() +
+                        "\n\n" +
+                        'https://www.pokemon-card.com/deck/deckView.php/deckID/' +
+                        deckModel.deckCode.toString() +
+                        '.png')
                   }),
         ],
       ),
