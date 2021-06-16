@@ -30,16 +30,16 @@ class DetailPage extends StatelessWidget {
                 child: Text(' ▼デッキ名',
                     style: TextStyle(
                         fontFamily: 'Code128',
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.bold),
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.normal),
                     textAlign: TextAlign.left)),
             SizedBox(
                 width: double.infinity,
                 child: Text(' ' + deckModel.deckName.toString(),
                     style: TextStyle(
                         fontFamily: 'Code128',
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.normal),
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.bold),
                     textAlign: TextAlign.left)),
             Spacer(
               flex: 5,
@@ -50,15 +50,15 @@ class DetailPage extends StatelessWidget {
                 child: Text(' ▼デッキコード',
                     style: TextStyle(
                         fontFamily: 'Code128',
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.bold),
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.normal),
                     textAlign: TextAlign.left)),
             SizedBox(
                 width: double.infinity,
                 child: Text(' ' + deckModel.deckCode.toString(),
                     style: TextStyle(
                         fontFamily: 'Code128',
-                        fontSize: 20.0,
+                        fontSize: 15.0,
                         fontWeight: FontWeight.normal),
                     textAlign: TextAlign.left)),
             Spacer(
@@ -70,8 +70,8 @@ class DetailPage extends StatelessWidget {
                 child: Text(' ▼メモ',
                     style: TextStyle(
                         fontFamily: 'Code128',
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.bold),
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.normal),
                     textAlign: TextAlign.left)),
             SizedBox(
                 width: double.infinity,
@@ -79,7 +79,7 @@ class DetailPage extends StatelessWidget {
                 child: Text(' ' + deckModel.deckMemo.toString(),
                     style: TextStyle(
                         fontFamily: 'Code128',
-                        fontSize: 16.0,
+                        fontSize: 15.0,
                         fontWeight: FontWeight.normal),
                     textAlign: TextAlign.left)),
             Spacer(
