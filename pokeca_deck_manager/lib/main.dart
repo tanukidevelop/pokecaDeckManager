@@ -123,9 +123,9 @@ class _MyHomePageState extends State<MyHomePage> {
         editDeckModel.deckCode = map["deckCode"];
         editDeckModel.deckMemo = map["deckMemo"];
       } else {
-        _deckList.remove(index);
+        // _deckList.remove(index);
+        // print(_deckList)
       }
-      // _deckList.add(deckModel);
     });
   }
 

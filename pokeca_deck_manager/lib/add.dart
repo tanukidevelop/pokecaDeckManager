@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'main.dart';
+import 'package:intl/intl.dart';
 
 class AddPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    String deckName = "";
+    String deckCode = "";
+    String deckMemo = "";
+
     return Scaffold(
       appBar: AppBar(
         title: Text('新規デッキレシピ'),
@@ -16,12 +21,16 @@ class AddPage extends StatelessWidget {
               flex: 5,
             ),
             TextFormField(
-                decoration: const InputDecoration(
-              border: OutlineInputBorder(), // 外枠付きデザイン
-              filled: true, // fillColorで指定した色で塗り潰し
-              fillColor: Colors.white,
-              labelText: "デッキ名",
-            )),
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(), // 外枠付きデザイン
+                filled: true, // fillColorで指定した色で塗り潰し
+                fillColor: Colors.white,
+                labelText: "デッキ名",
+              ),
+              onChanged: (text) {
+                deckName = text;
+              },
+            ),
 
             Spacer(
               flex: 5,
@@ -30,12 +39,16 @@ class AddPage extends StatelessWidget {
               flex: 5,
             ),
             TextFormField(
-                decoration: const InputDecoration(
-              border: OutlineInputBorder(), // 外枠付きデザイン
-              filled: true, // fillColorで指定した色で塗り潰し
-              fillColor: Colors.white,
-              labelText: "デッキコード",
-            )),
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(), // 外枠付きデザイン
+                filled: true, // fillColorで指定した色で塗り潰し
+                fillColor: Colors.white,
+                labelText: "デッキコード",
+              ),
+              onChanged: (text) {
+                deckCode = text;
+              },
+            ),
             Spacer(
               flex: 5,
             ),
@@ -44,12 +57,16 @@ class AddPage extends StatelessWidget {
             ),
 
             TextFormField(
-                decoration: const InputDecoration(
-              border: OutlineInputBorder(), // 外枠付きデザイン
-              filled: true, // fillColorで指定した色で塗り潰し
-              fillColor: Colors.white,
-              labelText: "メモ",
-            )),
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(), // 外枠付きデザイン
+                filled: true, // fillColorで指定した色で塗り潰し
+                fillColor: Colors.white,
+                labelText: "メモ",
+              ),
+              onChanged: (text) {
+                deckMemo = text;
+              },
+            ),
             Spacer(
               flex: 5,
             ),
@@ -74,19 +91,16 @@ class AddPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   onPressed: () {
-                    final List<String> deckInfoList = [
-                      "ハイクラスデッキ インテレオンVmaxデッキ",
-                      "xYcxcx-bj7co1-8D8c8G",
-                      "ハイクラスデッキだよな",
-                      "2021年6月15日"
-                    ];
+                    DateTime now = DateTime.now();
+                    DateFormat outputFormat = DateFormat('yyyy年MM月dd日');
+                    String date = outputFormat.format(now);
+                    print(date);
                     Map<String, String> deckDict = {
-                      'deckName': 'ダメリオン',
-                      'deckCode': 'xYcxcx-bj7co1-8D8c8G',
-                      'deckMemo': 'ハイクラスデッキだよな',
-                      'createDate': '2021年6月15日',
+                      'deckName': deckName,
+                      'deckCode': deckCode,
+                      'deckMemo': deckMemo,
+                      'createDate': date,
                     };
-                    // _deckList.add(deckModel);
                     Navigator.pop(context, deckDict);
                   },
                 ),
