@@ -14,7 +14,8 @@
          FlutterApplication and put your custom class here. -->
          
    <application
-        android:label="pokeca_deck_manager"
+        android:name="ポケカデッキ管理"
+        android:label="ポケカデッキ管理"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
