@@ -29,7 +29,10 @@ class DetailPage extends StatelessWidget {
               'Deckimage.png': bytes,
             },
             '*/*',
-            text: 'ツイート!');
+            text: 'デッキ名:' +
+                deckModel.deckName.toString() +
+                "\nデッキコード:" +
+                deckModel.deckCode.toString());
       } catch (e) {
         print('error: $e');
       }
