@@ -182,6 +182,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // 読み取り
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final String? savedEntriesJson = prefs.getString("deckList");
+    if (String == null) return;
     final List<dynamic> entriesDeserialized = json.decode(savedEntriesJson!);
     List<DeckRecipeModel> deserializedEntries = entriesDeserialized
         .map((json) => DeckRecipeModel.fromJson(json))
