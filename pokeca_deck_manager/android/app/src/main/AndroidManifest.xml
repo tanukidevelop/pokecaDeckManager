@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.pokeca_deck_manager">
+    package="com.pokeca_deck_manager">
 
         <!-- The INTERNET permission is required for development. Specifically,
          flutter needs it to communicate with the running application
