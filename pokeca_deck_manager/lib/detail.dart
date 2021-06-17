@@ -1,7 +1,13 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'main.dart';
-import 'package:share/share.dart';
+import 'dart:async';
+import 'dart:io';
+import 'dart:typed_data';
+
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:esys_flutter_share/esys_flutter_share.dart';
 
 class DetailPage extends StatelessWidget {
   DeckRecipeModel deckModel;
@@ -9,23 +15,33 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future<void> _shareImageFromUrl() async {
+      try {
+        var request = await HttpClient().getUrl(Uri.parse(
+            'https://www.pokemon-card.com/deck/deckView.php/deckID/' +
+                deckModel.deckCode.toString() +
+                '.png'));
+        var response = await request.close();
+        Uint8List bytes = await consolidateHttpClientResponseBytes(response);
+        Share.files(
+            'Share images',
+            {
+              'Deckimage.png': bytes,
+            },
+            '*/*',
+            text: 'ツイート!');
+      } catch (e) {
+        print('error: $e');
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text('デッキレシピ 詳細'),
         actions: <Widget>[
           IconButton(
-              icon: Icon(Icons.share),
-              onPressed: () => {
-                    Share.share("デッキ名:" +
-                        deckModel.deckName.toString() +
-                        "\n\nデッキコード:" +
-                        deckModel.deckCode.toString() +
-                        "\n\n" +
-                        'https://www.pokemon-card.com/deck/deckView.php/deckID/' +
-                        deckModel.deckCode.toString() +
-                        '.png')
-                  }),
+              icon: Icon(Icons.share), onPressed: () => {_shareImageFromUrl()}),
         ],
       ),
       body: Center(
