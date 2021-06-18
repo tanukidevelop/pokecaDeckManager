@@ -1,6 +1,6 @@
 {
-    "name": "pokeca_deck_manager",
-    "short_name": "pokeca_deck_manager",
+    "name": "com.flutter_create",
+    "short_name": "com.flutter_create",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

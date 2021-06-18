@@ -1,4 +1,4 @@
-# pokeca_deck_manager
+# com.flutter_create
 
 A new Flutter project.
 
